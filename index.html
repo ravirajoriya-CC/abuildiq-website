@@ -239,9 +239,15 @@
 <section class="cta-section" id="contact">
   <h2>Ready to build smarter?</h2>
   <p id="cta-sub">Join 200+ construction and real estate teams across India using aBuildIQ.</p>
-  <div class="cta-form" id="cta-form">
-    <input type="email" id="demo-email" placeholder="Your work email">
-    <button onclick="submitDemo()" class="btn-primary" style="padding:0.75rem 1.8rem; border:none; cursor:pointer;">Request a demo</button>
+  <div id="cta-form">
+    <form id="demo-form" action="https://formsubmit.co/leads@abuildiq.in" method="POST" onsubmit="return handleSubmit(event)" style="display:flex; gap:0.8rem; justify-content:center; flex-wrap:wrap;">
+      <input type="hidden" name="_subject" value="New Demo Request – aBuildIQ">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://abuildiq.in/#contact">
+      <input type="hidden" name="_template" value="table">
+      <input type="email" name="email" id="demo-email" placeholder="Your work email" required style="padding:0.75rem 1.2rem; border-radius:7px; border:1.5px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.08); color:#fff; font-size:0.95rem; width:260px; outline:none;">
+      <button type="submit" class="btn-primary" style="padding:0.75rem 1.8rem; border:none; cursor:pointer; font-size:1rem;">Request a demo</button>
+    </form>
   </div>
   <div id="cta-success" style="display:none; margin-top:1.5rem;">
     <div style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.25); border-radius:10px; padding:1.5rem 2rem; display:inline-block;">
@@ -252,17 +258,27 @@
   </div>
 </section>
 <script>
-function submitDemo() {
+function handleSubmit(e) {
+  e.preventDefault();
   var email = document.getElementById('demo-email').value.trim();
   if (!email || !email.includes('@')) {
     document.getElementById('demo-email').style.borderColor = '#f97316';
     document.getElementById('demo-email').focus();
-    return;
+    return false;
   }
-  document.getElementById('cta-form').style.display = 'none';
-  document.getElementById('cta-sub').style.display = 'none';
-  document.getElementById('cta-email-confirm').textContent = 'We\'ll reach out to ' + email + ' within 24 hours.';
-  document.getElementById('cta-success').style.display = 'block';
+  var form = document.getElementById('demo-form');
+  var data = new FormData(form);
+  fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+    .then(function(res) {
+      document.getElementById('cta-form').style.display = 'none';
+      document.getElementById('cta-sub').style.display = 'none';
+      document.getElementById('cta-email-confirm').textContent = "We'll reach out to " + email + " within 24 hours.";
+      document.getElementById('cta-success').style.display = 'block';
+    })
+    .catch(function() {
+      form.submit();
+    });
+  return false;
 }
 </script>
 
