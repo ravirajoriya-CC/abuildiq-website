@@ -238,12 +238,33 @@
 
 <section class="cta-section" id="contact">
   <h2>Ready to build smarter?</h2>
-  <p>Join 200+ construction and real estate teams across India using aBuildIQ.</p>
-  <div class="cta-form">
-    <input type="email" placeholder="Your work email">
-    <a href="#" class="btn-primary" style="padding:0.75rem 1.8rem;">Request a demo</a>
+  <p id="cta-sub">Join 200+ construction and real estate teams across India using aBuildIQ.</p>
+  <div class="cta-form" id="cta-form">
+    <input type="email" id="demo-email" placeholder="Your work email">
+    <button onclick="submitDemo()" class="btn-primary" style="padding:0.75rem 1.8rem; border:none; cursor:pointer;">Request a demo</button>
+  </div>
+  <div id="cta-success" style="display:none; margin-top:1.5rem;">
+    <div style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.25); border-radius:10px; padding:1.5rem 2rem; display:inline-block;">
+      <div style="font-size:2rem; margin-bottom:0.5rem;">&#10003;</div>
+      <div style="font-size:1.1rem; font-weight:700; margin-bottom:0.3rem;">Thanks! We'll be in touch soon.</div>
+      <div style="font-size:0.9rem; color:#b0c4d8;" id="cta-email-confirm"></div>
+    </div>
   </div>
 </section>
+<script>
+function submitDemo() {
+  var email = document.getElementById('demo-email').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('demo-email').style.borderColor = '#f97316';
+    document.getElementById('demo-email').focus();
+    return;
+  }
+  document.getElementById('cta-form').style.display = 'none';
+  document.getElementById('cta-sub').style.display = 'none';
+  document.getElementById('cta-email-confirm').textContent = 'We\'ll reach out to ' + email + ' within 24 hours.';
+  document.getElementById('cta-success').style.display = 'block';
+}
+</script>
 
 <footer>
   <div class="footer-logo">a<span>Build</span>IQ</div>
