@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>aBuildIQ – Smarter Construction Technology</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #1a1a2e; background: #fff; }
+
+  /* NAV */
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 5%; background: #fff; border-bottom: 1px solid #e8e8e8; position: sticky; top: 0; z-index: 100; }
+  .logo { font-size: 1.5rem; font-weight: 700; color: #f97316; letter-spacing: -0.5px; }
+  .logo span { color: #1e3a5f; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: #333; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: #f97316; }
+  .nav-cta { background: #f97316; color: #fff; padding: 0.55rem 1.4rem; border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 0.9rem; }
+  .nav-cta:hover { background: #ea6c0a; color: #fff; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, #1e3a5f 0%, #0d2340 60%, #1e3a5f 100%); color: #fff; padding: 5rem 5% 4rem; display: flex; align-items: center; gap: 3rem; }
+  .hero-text { flex: 1; }
+  .hero-badge { display: inline-block; background: rgba(249,115,22,0.2); color: #fb923c; border: 1px solid rgba(249,115,22,0.4); padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 1.2rem; }
+  .hero h1 { font-size: 2.8rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.1rem; }
+  .hero h1 span { color: #f97316; }
+  .hero p { font-size: 1.1rem; color: #b0c4d8; max-width: 480px; line-height: 1.7; margin-bottom: 2rem; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { background: #f97316; color: #fff; padding: 0.75rem 1.8rem; border-radius: 7px; font-weight: 700; text-decoration: none; font-size: 1rem; transition: background 0.2s; }
+  .btn-primary:hover { background: #ea6c0a; }
+  .btn-secondary { background: transparent; color: #fff; padding: 0.75rem 1.8rem; border-radius: 7px; font-weight: 600; text-decoration: none; font-size: 1rem; border: 1.5px solid rgba(255,255,255,0.3); transition: border-color 0.2s; }
+  .btn-secondary:hover { border-color: #f97316; color: #fb923c; }
+  .hero-visual { flex: 0 0 340px; }
+  .hero-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 1.5rem; }
+  .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .stat { background: rgba(255,255,255,0.06); border-radius: 10px; padding: 1rem; text-align: center; }
+  .stat-num { font-size: 1.7rem; font-weight: 800; color: #f97316; }
+  .stat-label { font-size: 0.75rem; color: #94a3b8; margin-top: 0.2rem; }
+  .progress-item { margin-bottom: 0.8rem; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 0.8rem; color: #b0c4d8; margin-bottom: 0.35rem; }
+  .progress-bar { background: rgba(255,255,255,0.1); border-radius: 4px; height: 7px; }
+  .progress-fill { height: 100%; border-radius: 4px; background: #f97316; }
+
+  /* CLIENTS */
+  .clients { background: #f9f9f9; padding: 1.5rem 5%; text-align: center; border-bottom: 1px solid #eee; }
+  .clients p { font-size: 0.82rem; color: #888; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 1.2rem; }
+  .client-logos { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; align-items: center; }
+  .client-name { font-size: 1rem; font-weight: 700; color: #bbb; letter-spacing: 1px; }
+
+  /* FEATURES */
+  section { padding: 4.5rem 5%; }
+  .section-label { color: #f97316; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .section-title { font-size: 2rem; font-weight: 800; color: #1e3a5f; margin-bottom: 0.7rem; }
+  .section-sub { color: #555; font-size: 1rem; max-width: 520px; line-height: 1.65; }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+  .feature-card { background: #fff; border: 1px solid #e8e8e8; border-radius: 12px; padding: 1.5rem; transition: border-color 0.2s, transform 0.2s; }
+  .feature-card:hover { border-color: #f97316; transform: translateY(-3px); }
+  .feat-icon { width: 44px; height: 44px; background: #fff4ec; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.4rem; }
+  .feature-card h3 { font-size: 1rem; font-weight: 700; color: #1e3a5f; margin-bottom: 0.5rem; }
+  .feature-card p { font-size: 0.87rem; color: #666; line-height: 1.6; }
+
+  /* HOW IT WORKS */
+  .how { background: #f4f8ff; }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+  .step { text-align: center; }
+  .step-num { width: 48px; height: 48px; background: #1e3a5f; color: #fff; font-weight: 800; font-size: 1.1rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+  .step h3 { font-size: 0.97rem; font-weight: 700; color: #1e3a5f; margin-bottom: 0.4rem; }
+  .step p { font-size: 0.85rem; color: #555; line-height: 1.6; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: #fff; }
+  .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+  .test-card { border: 1px solid #e8e8e8; border-radius: 12px; padding: 1.5rem; }
+  .test-text { font-size: 0.9rem; color: #444; line-height: 1.7; margin-bottom: 1.2rem; font-style: italic; }
+  .test-author { display: flex; align-items: center; gap: 0.8rem; }
+  .avatar { width: 40px; height: 40px; border-radius: 50%; background: #1e3a5f; color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+  .author-name { font-size: 0.9rem; font-weight: 700; color: #1e3a5f; }
+  .author-role { font-size: 0.78rem; color: #888; }
+
+  /* CTA */
+  .cta-section { background: linear-gradient(135deg, #1e3a5f, #0d2340); color: #fff; text-align: center; padding: 4.5rem 5%; }
+  .cta-section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 0.8rem; }
+  .cta-section p { color: #b0c4d8; font-size: 1rem; margin-bottom: 2rem; }
+  .cta-form { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+  .cta-form input { padding: 0.75rem 1.2rem; border-radius: 7px; border: 1.5px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: #fff; font-size: 0.95rem; width: 260px; outline: none; }
+  .cta-form input::placeholder { color: #94a3b8; }
+  .cta-form input:focus { border-color: #f97316; }
+
+  /* FOOTER */
+  footer { background: #0d1a2e; color: #94a3b8; padding: 2.5rem 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.85rem; }
+  .footer-logo { font-size: 1.2rem; font-weight: 700; color: #f97316; }
+  .footer-logo span { color: #fff; }
+  footer a { color: #94a3b8; text-decoration: none; margin-left: 1.2rem; }
+  footer a:hover { color: #f97316; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">a<span>Build</span>IQ</div>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#testimonials">Clients</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get started</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">&#127959; Construction Intelligence Platform</div>
+    <h1>Build Smarter.<br>Deliver <span>Faster.</span></h1>
+    <p>aBuildIQ brings AI-powered insights and real-time intelligence to construction and real estate projects — reducing delays, cutting costs, and keeping every stakeholder aligned.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Request a demo</a>
+      <a href="#features" class="btn-secondary">See how it works</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="stat-row">
+        <div class="stat"><div class="stat-num">32%</div><div class="stat-label">Cost reduction</div></div>
+        <div class="stat"><div class="stat-num">2.4×</div><div class="stat-label">Faster delivery</div></div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-label"><span>Site A – Tower Block</span><span>78%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-label"><span>Site B – Commercial Hub</span><span>54%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:54%"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-label"><span>Site C – Residential Phase 2</span><span>91%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:91%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="clients">
+  <p>Trusted by leading builders &amp; developers across India</p>
+  <div class="client-logos">
+    <div class="client-name">SHAPOORJI</div>
+    <div class="client-name">PRESTIGE</div>
+    <div class="client-name">L&amp;T REALTY</div>
+    <div class="client-name">GODREJ PROPERTIES</div>
+    <div class="client-name">BRIGADE</div>
+  </div>
+</div>
+
+<section id="features">
+  <div class="section-label">Features</div>
+  <div class="section-title">Everything your project needs</div>
+  <div class="section-sub">One platform to plan, monitor, and optimize every aspect of your construction or real estate project.</div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feat-icon">&#128202;</div>
+      <h3>Real-time project dashboards</h3>
+      <p>Live visibility into budget, schedule, and on-site progress across all your projects from a single screen.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon">&#129302;</div>
+      <h3>AI delay prediction</h3>
+      <p>Spot bottlenecks before they happen. Our models flag risks weeks in advance so you can act early.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon">&#128203;</div>
+      <h3>Smart procurement</h3>
+      <p>Automate material orders, track vendor performance, and compare quotes — all in one place.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon">&#127968;</div>
+      <h3>Real estate analytics</h3>
+      <p>Market pricing intelligence, demand heatmaps, and launch timing tools for developers and brokers.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon">&#128119;</div>
+      <h3>Labour management</h3>
+      <p>Track workforce attendance, productivity, and safety compliance with mobile-first tools built for sites.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon">&#128196;</div>
+      <h3>Document control</h3>
+      <p>Centralized drawings, approvals, and compliance documents with version tracking and instant search.</p>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="section-label">How it works</div>
+  <div class="section-title">Up and running in days</div>
+  <div class="section-sub">No lengthy implementations. aBuildIQ connects to your existing workflows and starts delivering value immediately.</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Connect your projects</h3>
+      <p>Import site data, plans, and team details. Works with Excel, ERP systems, and existing project tools.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Configure your dashboards</h3>
+      <p>Set up KPIs, alerts, and reporting views tailored to your company's structure and workflow.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Invite your team</h3>
+      <p>Role-based access for site engineers, PMs, finance teams, and promoters — each seeing what they need.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Track, act &amp; improve</h3>
+      <p>Get daily intelligence reports, AI recommendations, and audit-ready data for every stakeholder.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="section-label">Client stories</div>
+  <div class="section-title">Builders who switched to aBuildIQ</div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="test-text">"We reduced project overruns by 28% in the first six months. The delay alerts alone saved us from a major penalty clause."</div>
+      <div class="test-author"><div class="avatar">RK</div><div><div class="author-name">Rajesh Kumar</div><div class="author-role">VP Projects, Prestige Group</div></div></div>
+    </div>
+    <div class="test-card">
+      <div class="test-text">"Finally one platform for procurement, labour, and reporting. Our site teams adopted it in under a week — no training required."</div>
+      <div class="test-author"><div class="avatar">AS</div><div><div class="author-name">Anusha Sharma</div><div class="author-role">COO, Greenfield Developers</div></div></div>
+    </div>
+    <div class="test-card">
+      <div class="test-text">"The real estate analytics module gave us pricing confidence we never had before. Our last launch sold out 40% faster."</div>
+      <div class="test-author"><div class="avatar">PM</div><div><div class="author-name">Pradeep Menon</div><div class="author-role">MD, Skyline Properties</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <h2>Ready to build smarter?</h2>
+  <p>Join 200+ construction and real estate teams across India using aBuildIQ.</p>
+  <div class="cta-form">
+    <input type="email" placeholder="Your work email">
+    <a href="#" class="btn-primary" style="padding:0.75rem 1.8rem;">Request a demo</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">a<span>Build</span>IQ</div>
+  <div>&copy; 2025 aBuildIQ. All rights reserved. | abuildiq.in</div>
+  <div>
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
